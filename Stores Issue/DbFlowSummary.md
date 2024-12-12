@@ -1315,12 +1315,29 @@ SELECT * FROM T_STO_TAXMASTER WHERE ISDELETED = 0
 ```sql
 -- SP
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+-- Parameter
+@HospID as Numeric,
+@OperatorID as Numeric
+
 -- SP
 exec  S_POP_Aesthetics
+
 -- SP
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
+-- Parameter
+@isDeleted as integer=0,
+@HospId as integer,
+@OperatorId as numeric,
+@Flag as int=1
+
 -- SP
 EXECUTE S_POP_FinancialYear @FLAG=5,@PK_FINYEARID=0,@FROMDATE='12:00:00 AM',@TODATE='12:00:00 AM',@HospID=1
+-- Parameter
+@FLAG		AS NUMERIC,
+@PK_FINYEARID	AS NUMERIC,
+@FROMDATE	AS DATETIME,
+@TODATE		AS DATETIME,
+@HOSPID		AS NUMERIC
 ```
 
 ![alt text](image-61.png)
@@ -1330,6 +1347,11 @@ EXECUTE S_POP_FinancialYear @FLAG=5,@PK_FINYEARID=0,@FROMDATE='12:00:00 AM',@TOD
 ```sql
 --SP
 Exec S_ST_REP_OpeningStock @HospID=1 ,@Title='Opening Balance For The Financial Year Apr-1-2014 To Mar-31-2015',@FinID=1,@StoreID=0
+-- Parameter
+@HospID as Numeric,
+@Title as varchar(1000),
+@FinID as Numeric,
+@StoreID as Numeric=0
 ```
 
 ![alt text](image-62.png)
@@ -1339,6 +1361,7 @@ Program Terminate
 - Select `Fin. Year`, `Store Name` in `Select Stores` & press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_OpeningStock @HospID=1 ,@Title='Opening Balance For The Financial Year Apr-1-2014 To Mar-31-2015',@FinID=1,@StoreID=32
 ```
 
@@ -1351,9 +1374,22 @@ Program Terminate
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+-- Parameter
+@HospID as Numeric,
+@OperatorID as Numeric
+
+-- Sp
 exec  S_POP_Aesthetics
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,2
+-- Parameter
+@isDeleted as integer=0,
+@HospId as integer,
+@OperatorId as numeric,
+@Flag as int=1
 ```
 
 ![alt text](image-64.png)
@@ -1363,7 +1399,16 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ![alt text](image-65.png)
 
 ```sql
+-- Sp
 Exec S_ST_REP_StockAdjustment @HospID=1 ,@Title='Stock Adjustment Surplus Report From 12/Dec/2018 To Date 12/Dec/2024' ,@Operator='SMCH' ,@FromDate='12/12/2018 00:00:00 AM' ,@ToDate='12/12/2024 5:01:02 AM' ,@StoreID=313 ,@AdjustmentType='S'
+-- Parameter
+@HospId as Numeric,
+@Title as varchar(200),
+@Operator as Varchar(200)='' ,
+@Fromdate as datetime,
+@Todate as datetime,
+@StoreID as Numeric ,
+@AdjustmentType as Varchar(1)
 ```
 
 ![alt text](image-66.png)
@@ -1373,7 +1418,9 @@ Exec S_ST_REP_StockAdjustment @HospID=1 ,@Title='Stock Adjustment Surplus Report
 ![alt text](image-67.png)
 
 ```sql
+-- Sp
 Exec S_ST_REP_StockAdjustment @HospID=1 ,@Title='Stock Adjustment Deficit Report From 12/Dec/2020 To Date 12/Dec/2024' ,@Operator='SMCH' ,@FromDate='12/12/2020 00:00:00 AM' ,@ToDate='12/12/2024 5:06:39 AM' ,@StoreID=313 ,@AdjustmentType='D'
+
 ```
 
 ![alt text](image-68.png)
@@ -1383,9 +1430,22 @@ Exec S_ST_REP_StockAdjustment @HospID=1 ,@Title='Stock Adjustment Deficit Report
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+-- Parameter
+@HospID as Numeric,
+@OperatorID as Numeric
+
+-- Sp
 exec  S_POP_Aesthetics
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
+-- Parameter
+@isDeleted as integer=0,
+@HospId as integer,
+@OperatorId as numeric,
+@Flag as int=1
 ```
 
 ![alt text](image-69.png)
@@ -1395,7 +1455,15 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,5
 ![alt text](image-70.png)
 
 ```sql
+-- Sp
 Exec S_ST_POP_REP_ExpiryItems @HospID=1 ,@Title='Expiry Item Report For The Period From 12 - Dec - 2019 To 12 - Dec - 2024', @fromDate='12/12/2019 5:09:14 AM', @ToDate='12/12/2024 5:09:14 AM' ,@StoreID=32
+-- Parameter
+@HospId as Int,
+@Title as varchar(1000),
+@FROMDATE as datetime,
+@TODATE as datetime,
+@Storeid as numeric=0,
+@Operator as varchar(1000)=''
 ```
 
 Program terminate
@@ -1409,9 +1477,17 @@ Program terminate
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+
+-- Sp
 exec  S_POP_Aesthetics
+-- Parameter
+
+-- Sp
 Exec S_ST_POP_Srv 1,1,0,0
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
 ```
 
@@ -1422,8 +1498,20 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,5
 ![alt text](image-73.png)
 
 ```sql
+-- Sp
 EXEC S_REP_OPB_hospital 1
+-- Parameter
+@hospid as numeric
+
+-- Sp
 Exec S_ST_REP_SrvDayBook @HospID=1 ,@FromDate='12/12/2018 5:14:32 AM' ,@ToDate='12/12/2024 5:14:32 AM' ,@TranID=13 ,@StoreID=32 ,@Title='SRV DayBook For The Period From 12 - Dec - 2018 To 12 - Dec - 2024'
+-- Parameter
+@HospID as Numeric,
+@FromDate as DateTime,
+@ToDate as DateTime,
+@TranID as Numeric = 0,
+@StoreID  as Numeric=0,
+@Title as varchar(1000)
 ```
 
 ![alt text](image-74.png)
@@ -1439,10 +1527,21 @@ Select another `Store Name`
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+-- Parameter
+@HospID as Numeric,
+@OperatorID as Numeric
+
+-- Sp
 exec  S_POP_Aesthetics
+
+-- Sp
 Exec S_ST_POP_PurIndTransactions 0,5,1
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
+
 ```
 
 ![alt text](image-76.png)
@@ -1452,7 +1551,16 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,5
 ![alt text](image-77.png)
 
 ```sql
+-- Sp
 Exec S_ST_REP_IssueDayBook @HospID=1 ,@FromDate='12/1/2018 5:29:38 AM' ,@ToDate='12/12/2024 5:29:38 AM' ,@TranID=6 ,@StoreID=405 ,@Title='Issue Day Book From Store ICU NURSING For The Period From 01 - Dec - 2018 To 12 - Dec - 2024' ,@DeptID='0'
+-- Parameter
+@HospID as Numeric,
+@FromDate as DateTime,
+@ToDate as DateTime,
+@TranID as Numeric = 0,
+@StoreID as Numeric=0,
+@Title as varchar(1000)
+,@DeptId as varchar(20)   = 0
 ```
 
 Terminate
@@ -1462,11 +1570,16 @@ Terminate
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+
+-- Sp
 exec  S_POP_Aesthetics
-Select Getdate() as SystemDate
-Select Getdate() as SystemDate
+
+-- Sp
 Exec S_ST_POP_PurIndTransactions 0,5,1
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,6
 ```
 
@@ -1477,6 +1590,7 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,6
 ![alt text](image-79.png)
 
 ```sql
+-- Sp
 Exec S_ST_REP_IssueDayBook @HospID=1 ,@FromDate='12/25/2015 5:33:02 AM' ,@ToDate='12/12/2024 5:33:02 AM' ,@TranID=6 ,@StoreID=0 ,@Title='Issue Day Book From Store 6TH FLOOR For The Period From 25 - Dec - 2015 To 12 - Dec - 2024' ,@DeptID='313'
 ```
 
@@ -1487,10 +1601,13 @@ Terminate
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
-Select Getdate() as SystemDate
-Select Getdate() as SystemDate
+
+-- Sp
 EXECUTE S_STCON_POP_StoreMapping @FLAG=9,@HospID=1
 ```
 
@@ -1499,12 +1616,14 @@ EXECUTE S_STCON_POP_StoreMapping @FLAG=9,@HospID=1
 Select `Category`
 
 ```sql
+-- Sp
 EXECUTE S_STCON_POP_StoreMapping @FLAG=10,@HospID=1,@PARAM1=1907
 ```
 
 Select `Sub Category`
 
 ```sql
+-- Sp
 EXECUTE S_STCON_POP_StoreMapping @FLAG=3,@HospID=1,@PARAM1=27
 ```
 
@@ -1513,8 +1632,15 @@ EXECUTE S_STCON_POP_StoreMapping @FLAG=3,@HospID=1,@PARAM1=27
 Pressw `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StockLedgerNewONE  1,'Item History Report For The Period From 01 - Dec - 2016 To 12 - Dec - 2024 In CENTRAL STORE For Item                                    ALL PIN',32,318,'12/1/2016','12/12/2024 11:59:59 PM'
+-- Parameter
+--Not Available
+
+-- Sp
 select * from  Exec S_ST_REP_StockLedgerNewONE  1,'Item History Report For The Period From 01 - Dec - 2016 To 12 - Dec - 2024 In CENTRAL STORE For Item                                    ALL PIN',32,318,'12/1/2016','12/12/2024 11:59:59 PM'
+-- Parameter
+--Not Available
 ```
 
 ![alt text](image-82.png)
@@ -1526,9 +1652,23 @@ Terminate
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+
+-- Sp
 exec  S_POP_Aesthetics
+
+-- Sp
 Exec S_STCON_POP_ItemMasterDetails 1,1,0,0
+-- Parameter
+@Mode    As  Int=0,
+@HospID  As Numeric ,
+@Pk_ItemID   As  Numeric=0,
+@Fk_ItemSubCatgID As Numeric=0,
+@IsDeleted  As Integer=0
+,@STRSTRING AS VARCHAR(30)  = ''  --added by abhi
+
+-- Sp
 Exec S_ST_ItemHelp 1,1
 ```
 
@@ -1537,7 +1677,14 @@ Exec S_ST_ItemHelp 1,1
 - Press `Report`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StockValue @HospID=1 ,@Type='S' ,@ItemID=0 ,@Title='Item Wise Stock Value Based On Selling Price As On 12 - Dec - 2024' ,@Operator='SMCH'
+-- Parameter
+@HospID as Numeric,
+@Type as Char(1)='C',
+@ItemID as Numeric=0,
+@Title as varchar(1000),
+@Operator as Varchar(200)=''
 ```
 
 Program Close
@@ -1547,10 +1694,12 @@ Program Close
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
 Exec S_STCON_POP_ItemMasterDetails 1,1,0,0
 Exec S_ST_ItemHelp 1,1
+
 ```
 
 ![alt text](image-84.png)
@@ -1558,6 +1707,7 @@ Exec S_ST_ItemHelp 1,1
 - Press `OK`
 
 ```SQL
+-- Sp
 Exec S_ST_REP_StockValue @HospID=1 ,@Type='C' ,@ItemID=0 ,@Title='Item Wise Stock Value As On 12 - Dec - 2024' ,@Operator='SMCH'
 ```
 
@@ -1568,6 +1718,7 @@ Exec S_ST_REP_StockValue @HospID=1 ,@Type='C' ,@ItemID=0 ,@Title='Item Wise Stoc
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
@@ -1579,7 +1730,15 @@ Exec S_ST_ItemHelp 1,1
 - Select `All Stores` & `Category`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StoreWiseStock @HospID=1 ,@Title='Storewise Stock Report As On 12 - Dec - 2024' ,@StoreID=0 ,@FromDate='12/12/2024' ,@ToDate='12/12/2024' ,@CatgID=2214
+-- Parameter
+@HospID as Numeric,
+@Title as varchar(1000),
+@StoreID as Numeric=0,
+@FromDate as DateTime,
+@ToDate as DateTime,
+@CatgID as numeric
 ```
 
 ![alt text](image-87.png)
@@ -1587,7 +1746,9 @@ Exec S_ST_REP_StoreWiseStock @HospID=1 ,@Title='Storewise Stock Report As On 12 
 - Select `Selected Store`, `Store Name`, `Category` & press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StoreWiseStock @HospID=1 ,@Title='Storewise Stock Report for CENTRAL STORE As On 12 - Dec - 2024' ,@StoreID=32 ,@FromDate='12/12/2024' ,@ToDate='12/12/2024' ,@CatgID=2309
+
 ```
 
 ![alt text](image-88.png)
@@ -1597,11 +1758,10 @@ Exec S_ST_REP_StoreWiseStock @HospID=1 ,@Title='Storewise Stock Report for CENTR
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
-Select Getdate() as SystemDate
-Select Getdate() as SystemDate
 ```
 
 ![alt text](image-89.png)
@@ -1609,7 +1769,17 @@ Select Getdate() as SystemDate
 - Select `Date` & `Store` & press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StoreWiseStockPosition @HospID=1 ,@Title='StoreWise Sales And Stock At A Glance Details for PHARMACY From 01 - Dec - 2018 To 12 - Dec - 2024' ,@StoreID=33, @fromDate='12/01/2018 00:00:00 AM', @ToDate='12/12/2024 11:59:59 PM'
+-- Parameter
+@HospID as Numeric,
+@Title as varchar(1000),
+@StoreID as Numeric=0,
+---------
+@cateid as numeric = 0,
+---------
+@Fromdate as datetime,
+@Todate as datetime
 ```
 
 ![alt text](image-90.png)
@@ -1619,6 +1789,7 @@ Exec S_ST_REP_StoreWiseStockPosition @HospID=1 ,@Title='StoreWise Sales And Stoc
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ```
 
@@ -1633,7 +1804,14 @@ SELECT ITEMNAME , PK_ITEMID FROM T_STO_ITEMMASTER WHERE ISDELETED =0
 press `Ok`
 
 ```sql
+-- Sp
 exec S_STO_REP_STOREIDENTSREPORT  '313', '789',1,'2024-12-12 00:00:00','2024-12-12 23:59:59'
+-- Parameter
+@DEPTID AS VARCHAR(10) ,
+@ITEMID AS VARCHAR(10) ,
+@HOSPID AS NUMERIC,
+@FROMDATE AS DATETIME ,
+@TODATE AS DATETIME
 ```
 
 ![alt text](image-93.png)
@@ -1641,6 +1819,7 @@ exec S_STO_REP_STOREIDENTSREPORT  '313', '789',1,'2024-12-12 00:00:00','2024-12-
 Select `Summary` & press `Ok`
 
 ```sql
+-- Sp
 exec S_STO_REP_STOREIDENTSREPORT  '313', '789',1,'2024-12-12 00:00:00','2024-12-12 23:59:59'
 ```
 
@@ -1655,6 +1834,7 @@ SELECT ITEMNAME , PK_ITEMID FROM T_STO_ITEMMASTER WHERE ISDELETED =0
 - Selct `Item Name` `Check All` & press `Ok`
 
 ```sql
+-- Sp
 exec S_STO_REP_STOREIDENTSREPORT  '<ALL>', '<ALL>',1,'2024-12-12 00:00:00','2024-12-12 23:59:59'
 ```
 
@@ -1665,10 +1845,9 @@ exec S_STO_REP_STOREIDENTSREPORT  '<ALL>', '<ALL>',1,'2024-12-12 00:00:00','2024
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
-Select Getdate() as SystemDate
-Select Getdate() as SystemDate
 Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ```
 
@@ -1677,7 +1856,15 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,2
 Selct `Store`, `Date` & press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_ABCAnalysis @HospID=1 ,@Title='ABC Analysis Of 6TH FLOOR From 07/Dec/2018 To Date 12/Dec/2024' ,@Operator='SMCH' ,@FromDate='12/07/2018 00:00:00 AM' ,@ToDate='12/12/2024 6:28:48 AM' ,@StoreID=313
+-- Parameter
+@HospId as Numeric,
+@Title as varchar(200),
+@Operator as Varchar(200)='' ,
+@Fromdate as datetime,
+@Todate as datetime,
+@StoreID as Numeric
 ```
 
 ![alt text](image-96.png)
@@ -1687,18 +1874,38 @@ Exec S_ST_REP_ABCAnalysis @HospID=1 ,@Title='ABC Analysis Of 6TH FLOOR From 07/D
 - `Open`
 
 ```sql
-
+--SP
+Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
+exec  S_POP_Aesthetics
+EXECUTE S_STCON_POP_StoreMapping @FLAG=1,@HospID=1
 ```
+
+![alt text](image-118.png)
+
+- Select `Date` & `Store/Dept`
+
+```sql
+-- SP
+Exec S_ST_REP_ConsumptionDetails @HospID=1 ,@FromDate='12/01/2016 00:00:00 AM' ,@ToDate='12/12/2024 11:59:59 PM' ,@DepartmentID=313 ,@Title='Material Consumption Detail Report For The Period From 01 - Dec - 2016 To 12 - Dec - 2024' ,@Operator='SMCH'
+-- Parameter
+@HospID as Numeric,
+@FromDate as DateTime,
+@ToDate as DateTime,
+@DepartmentID as Numeric = 0,
+@Title as varchar(1000),
+@Operator as Varchar(200)
+```
+
+![alt text](image-119.png)
 
 ### p) Expiry Returns
 
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
-Select Getdate() as SystemDate
-Select Getdate() as SystemDate
 EXECUTE S_STCON_POP_StoreMapping @FLAG=1,@HospID=1
 ```
 
@@ -1709,8 +1916,14 @@ EXECUTE S_STCON_POP_StoreMapping @FLAG=1,@HospID=1
 ![alt text](image-98.png)
 
 ```sql
+-- Sp
 Exec S_ST_POP_REP_SupplierReturnItems @FromDate ='01/Dec/2015 00:00:00 AM' , @ToDate='12/Dec/2024 11:59:59 PM' ,@Title='Expiry Returns For ICU NURSING Store Between 01/Dec/2015 And 12/Dec/2024' ,@StoreId=405 ,@SupplierID =119
+-- Parameter
+
+-- Sp
 select * from Exec S_ST_POP_REP_SupplierReturnItems @FromDate ='01/Dec/2015 00:00:00 AM' , @ToDate='12/Dec/2024 11:59:59 PM' ,@Title='Expiry Returns For ICU NURSING Store Between 01/Dec/2015 And 12/Dec/2024' ,@StoreId=405 ,@SupplierID =119
+-- Parameter
+
 ```
 
 ![alt text](image-99.png)
@@ -1728,7 +1941,10 @@ GO
 
 
 
+-- Sp
 --- EXEC S_ST_POP_REP_SupplierReturnItems '07/FEB/2008 00:00:01 AM' , '07/FEB/2009 00:00:01 AM' , 33 , 1 , 'SSS'
+-- Parameter
+
 ALTER Proc [dbo].[S_ST_POP_REP_SupplierReturnItems]
 @FromDate as datetime,
 @ToDate as datetime,
@@ -1761,7 +1977,10 @@ Begin
 set @strsql =@strsql  + ' and ER.Fk_SupplierID ='+ cast(@SupplierID as varchar(10))
 end
 set @strsql =@strsql  + ' order By SupplierName,ER.PK_ExpiryReturnID,ItemName'
+-- Sp
 exec (@strSql)
+-- Parameter
+
 --print @strsql
 END
 ```
@@ -1771,6 +1990,7 @@ END
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
 Exec S_ST_POP_PurIndDepartments 0,1,1,5
@@ -1781,7 +2001,12 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,5
 - Select `Store Name` & press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_StoreWiseReorderQuantity @HospID=1 ,@Title='Re Order Quantity For Store ICU NURSING As On 12/Dec/2024 06:40:28 AM' ,@StoreId=405
+-- Parameter
+@HospId as numeric,
+@StoreId as numeric,
+@title as varchar(1000)
 ```
 
 ![alt text](image-103.png)
@@ -1791,11 +2016,16 @@ Exec S_ST_REP_StoreWiseReorderQuantity @HospID=1 ,@Title='Re Order Quantity For 
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_OperatorName @HospID=1 ,@OperatorID=1
 exec  S_POP_Aesthetics
 Exec S_ST_POP_PurIndDepartments 0,1,1,3
+--SP
 Exec S_ST_POP_REP_ItemMasterCategory @Flag=1,@HospID=1 , @ID=0
-
+-- Parameter
+@Flag  AS Integer,
+@HospID  AS NUMERIC,
+@ID  AS NUMERIC
 ```
 
 ![alt text](image-104.png)
@@ -1803,7 +2033,15 @@ Exec S_ST_POP_REP_ItemMasterCategory @Flag=1,@HospID=1 , @ID=0
 - Press `Ok`
 
 ```sql
+-- Sp
 Exec S_ST_REP_ItemMasterDetails @HospID=1 ,@StoreID=0 ,@CategoryID=0 ,@SubCategoryID=0 ,@Title='Store Wise Item Master List As On 12-Dec-2024' ,@Operator='SMCH'
+-- Parameter
+@HospID as Numeric,
+@StoreID as Numeric=0,
+@CategoryID as Numeric=0,
+@SubCategoryID as Numeric=0,
+@Title as varchar(1000),
+@Operator as Varchar(200)
 ```
 
 ![alt text](image-105.png)
@@ -1811,6 +2049,7 @@ Exec S_ST_REP_ItemMasterDetails @HospID=1 ,@StoreID=0 ,@CategoryID=0 ,@SubCatego
 - Select `store`
 
 ```sql
+-- Sp
 Exec S_ST_REP_ItemMasterDetails @HospID=1 ,@StoreID=94 ,@CategoryID=0 ,@SubCategoryID=0 ,@Title='Store Wise Item Master List As On 12-Dec-2024' ,@Operator='SMCH'
 ```
 
@@ -1829,12 +2068,18 @@ Exec S_ST_REP_ItemMasterDetails @HospID=1 ,@StoreID=94 ,@CategoryID=0 ,@SubCateg
 - Select `Suppler` & press `Ok`
 
 ```sql
+-- Sp
 exec S_ST_REP_SRVVENDORWISE '119' , '2019-12-01 12:00:00 AM' , '2024-12-12 12:00:00 AM'
+-- Parameter
+@SupplierID As Varchar(10),
+@FromDate As Datetime,
+@ToDate As DateTime
 ```
 
 - Select `Check All`
 
 ```sql
+-- Sp
 exec S_ST_REP_SRVVENDORWISE '<ALL>' , '2019-12-01 12:00:00 AM' , '2024-12-12 12:00:00 AM'
 ```
 
@@ -1862,9 +2107,18 @@ SELECT SRVNO , PK_SRVID FROM T_STO_SRV WHERE SRVDATE BETWEEN '12-12-2024' AND '1
 
 ```sql
 -- Single Selection
+-- Sp
 exec S_ST_REP_SRVDETAILS '1', '1312','2017-12-01 06:53:02 AM','2024-12-12 06:53:02 AM'
+-- Parameter
+@SUPID AS VARCHAR(10) ,
+@SRVID AS VARCHAR(10) ,
+@FROMDATE AS DATETIME ,
+@TODATE AS DATETIME
+
 -- All Selection
+-- Sp
 exec S_ST_REP_SRVDETAILS '<ALL>', '<ALL>','2017-12-01 06:53:02 AM','2024-12-12 06:53:02 AM'
+
 ```
 
 ![alt text](image-110.png)
@@ -1874,6 +2128,7 @@ exec S_ST_REP_SRVDETAILS '<ALL>', '<ALL>','2017-12-01 06:53:02 AM','2024-12-12 0
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ```
 
@@ -1882,7 +2137,15 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,2
 - Select `Date`, `Store` & press `Ok`
 
 ```sql
+-- Sp
 exec S_ST_REP_ExpiryItemsVendorWise  1, ' VENDOR WISE ITEMS EXPIRING BETWEEN  01-Dec-2017 AND 12-Dec-2024' , '2017-12-01 12:00:00 AM ' , '2024-12-12 12:00:00 AM',313
+-- Parameter
+@HospId as Int,
+@Title as varchar(1000),
+@FROMDATE as datetime,
+@TODATE as datetime,
+@Storeid as numeric=0,
+@Operator as varchar(1000)=''
 ```
 
 ![alt text](image-112.png)
@@ -1894,6 +2157,7 @@ exec S_ST_REP_ExpiryItemsVendorWise  1, ' VENDOR WISE ITEMS EXPIRING BETWEEN  01
 - press `Ok`
 
 ```sql
+-- Sp
 exec S_REP_STO_VENDERDETAILS
 ```
 
@@ -1908,6 +2172,7 @@ exec S_REP_STO_VENDERDETAILS
 - `Open`
 
 ```sql
+-- Sp
 Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ```
 
@@ -1918,9 +2183,18 @@ Exec S_ST_POP_PurIndDepartments 0,1,1,2
 ```sql
 -- Single Dept Select
 SELECT ITEMNAME , PK_ITEMID FROM T_STO_ITEMMASTER WHERE ISDELETED =0
+-- Sp
 exec S_REP_ST_IndentVsIssues  '313', '<ALL>','2016-12-01 00:00:00','2024-12-12 23:59:59'
+-- Parameter
+@DeptId as varchar(10) ,
+@ItemId as varchar(10) ,
+@FDate as datetime ,
+@Tdate as Datetime
+
 -- Dept Check all
+-- Sp
 exec S_REP_ST_IndentVsIssues  '<ALL>', '<ALL>','2016-12-01 00:00:00','2024-12-12 23:59:59'
+
 ```
 
 ![alt text](image-117.png)
