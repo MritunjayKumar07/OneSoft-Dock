@@ -27,7 +27,7 @@ Exec S_ST_POP_ItemNameWithDetails 'Z'
 @SEARCHSTR as VARCHAR(150) =''
 ```
 
-![alt text](./Stores%20Issue/./Stores%20Issue/image.png)
+![alt text](./Stores%20Issue/image.png)
 
 ### b) Internal Indent
 
