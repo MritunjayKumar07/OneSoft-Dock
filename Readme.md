@@ -33,7 +33,7 @@ Exec S_ST_POP_ItemNameWithDetails 'Z'
 
 - `Open`
 
-```sql
+```SQL
 -- SP
 exec S_POP_ModuleID INVENTORY
 -- Parameter
@@ -1924,5 +1924,6 @@ exec S_REP_ST_IndentVsIssues  '<ALL>', '<ALL>','2016-12-01 00:00:00','2024-12-12
 ```
 
 ![alt text](./Stores%20Issue/image-117.png)
-#   O n e S o f t - D o c k  
+#   O n e S o f t - D o c k 
+ 
  
